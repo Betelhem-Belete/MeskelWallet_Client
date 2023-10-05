@@ -10,7 +10,7 @@ const Home = () => {
 
     useEffect(() => {
       axios
-        .get('http://localhost:3030/users')
+        .get('http://localhost:3030/people')
         .then(result => setPeople(result.data))
         .catch((err) => console.log(err));
     });
@@ -18,7 +18,7 @@ const Home = () => {
     const handleDelete= (id) => {
       const confirm = window.confirm("Do you want to delete?");
       if (confirm){
-          axios.delete('http://localhost:3030/users/'+id)
+          axios.delete('http://localhost:3030/people/'+id)
           .then(result => {
               alert("record deleted")
               navigate('/')

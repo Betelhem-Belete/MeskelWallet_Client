@@ -21,9 +21,9 @@ const Dashboard = () => {
         september: '',
         november:'',
         december:''
-    })
+    });
     
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const handleInput = (e) => {
         setPeople({...person, [e.target.name]: e.target.value})
@@ -36,7 +36,7 @@ const Dashboard = () => {
         alert('Person added sucessfully')
         navigate('/')
         console.log(result)})
-    .catch(err => console.log(err))
+    .catch((err) => console.log(err))
    }
   return (
     <div className='d-flex w-100 justify-content-center align-items-center'>
