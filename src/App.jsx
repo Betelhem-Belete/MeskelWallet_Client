@@ -15,11 +15,12 @@ function App() {
       <div>
       <Routes>
         <Route path='/' element={<Home />}></Route>
-        <Route path="/login" element={user ? <Home /> : <Login />} />
+        {/* <Route path="/login" element={person ? <Home /> : <Login />} /> */}
         <Route path='/dashboard' element={<Dashboard />}></Route>
         <Route path='/edit/:id' element={<Edit />}></Route>
+        
       </Routes> 
-      {/* <Fotter /> */}
+      {/* <Footer /> */}
       </div>
       </BrowserRouter>
   );

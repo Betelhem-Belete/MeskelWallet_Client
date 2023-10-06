@@ -26,13 +26,13 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   const handleInput = (e) => {
-    setPeople({ ...person, [e.target.name]: e.target.value });
+    setPeople({ ...people, [e.target.name]: e.target.value });
   };
   //when press submit button to post the data to the form
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post('http://localhost:3030/people', person)
+      .post('http://localhost:3030/people', people)
       .then((result) => {
         alert('Person added sucessfully');
         navigate('/');
