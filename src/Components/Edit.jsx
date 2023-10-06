@@ -34,13 +34,13 @@ const Edit = () => {
   const navigate = useNavigate();
 
   const handleInput = (e) => {
-    setPeople({ ...person, [e.target.name]: e.target.value });
+    setPeople({ ...people, [e.target.name]: e.target.value });
   };
   //then to update the data
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .put('http://localhost:3030/people/' + id, person)
+      .put('http://localhost:3030/people/' + id, people)
       .then((result) => {
         alert('Person Updated sucessfully');
         navigate('/');
@@ -61,7 +61,7 @@ const Edit = () => {
               required
               placeholder="Enter Name"
               onChange={handleInput}
-              value={person.name}
+              value={people.name}
             />
           </div>
           <div>
@@ -73,7 +73,7 @@ const Edit = () => {
               required
               placeholder="Enter Gender"
               onChange={handleInput}
-              value={user.gender}
+              value={people.gender}
             />
           </div>
           <div>
@@ -84,7 +84,7 @@ const Edit = () => {
               className="form-control"
               placeholder="Enter mobile number"
               onChange={handleInput}
-              value={user.mobile}
+              value={people.mobile}
             />
           </div>
           <div>
@@ -95,7 +95,7 @@ const Edit = () => {
               className="form-control"
               placeholder="Enter money in january"
               onChange={handleInput}
-              value={user.january}
+              value={people.january}
             />
           </div>
           <div>
@@ -106,7 +106,7 @@ const Edit = () => {
               className="form-control"
               placeholder="Enter money"
               onChange={handleInput}
-              value={user.february}
+              value={people.february}
             />
           </div>
           <div>
@@ -117,7 +117,7 @@ const Edit = () => {
               className="form-control"
               placeholder="Enter money"
               onChange={handleInput}
-              value={user.march}
+              value={people.march}
             />
           </div>
           <div>
@@ -128,7 +128,7 @@ const Edit = () => {
               className="form-control"
               placeholder="Enter money"
               onChange={handleInput}
-              value={user.april}
+              value={people.april}
             />
           </div>
           <div>
@@ -139,7 +139,7 @@ const Edit = () => {
               className="form-control"
               placeholder="Enter money"
               onChange={handleInput}
-              value={user.may}
+              value={people.may}
             />
           </div>
           <div>
@@ -150,7 +150,7 @@ const Edit = () => {
               className="form-control"
               placeholder="Enter money"
               onChange={handleInput}
-              value={user.june}
+              value={people.june}
             />
           </div>
           <div>
@@ -161,7 +161,7 @@ const Edit = () => {
               className="form-control"
               placeholder="Enter money"
               onChange={handleInput}
-              value={user.july}
+              value={people.july}
             />
           </div>
           <div>
@@ -172,7 +172,7 @@ const Edit = () => {
               className="form-control"
               placeholder="Enter money"
               onChange={handleInput}
-              value={user.augest}
+              value={people.augest}
             />
           </div>
           <div>
@@ -183,7 +183,7 @@ const Edit = () => {
               className="form-control"
               placeholder="Enter money"
               onChange={handleInput}
-              value={user.september}
+              value={people.september}
             />
           </div>
           <div>
@@ -194,7 +194,7 @@ const Edit = () => {
               className="form-control"
               placeholder="Enter money"
               onChange={handleInput}
-              value={user.october}
+              value={people.october}
             />
           </div>
           <div>
@@ -205,7 +205,7 @@ const Edit = () => {
               className="form-control"
               placeholder="Enter money"
               onChange={handleInput}
-              value={user.november}
+              value={people.november}
             />
           </div>
           <div>
@@ -216,7 +216,7 @@ const Edit = () => {
               className="form-control"
               placeholder="Enter money"
               onChange={handleInput}
-              value={user.december}
+              value={people.december}
             />
           </div>
           <button className="btn btn-info mt-1">Edit</button>
