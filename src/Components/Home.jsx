@@ -5,31 +5,32 @@ import { v4 as uuid } from 'uuid';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Home = () => {
-    const [people, setPeople] = useState([]);
-    const navigate = useNavigate()
+  const [people, setPeople] = useState([]);
+  const navigate = useNavigate();
 
-    useEffect(() => {
+  useEffect(() => {
+    axios
+      .get('http://localhost:3030/people')
+      .then((result) => setPeople(result.data))
+      .catch((err) => console.log(err));
+  });
+
+  const handleDelete = (id) => {
+    const confirm = window.confirm('Do you want to delete?');
+    if (confirm) {
       axios
-        .get('http://localhost:3030/people')
-        .then(result => setPeople(result.data))
+        .delete('http://localhost:3030/people/' + id)
+        .then((result) => {
+          alert('record deleted');
+          navigate('/');
+        })
         .catch((err) => console.log(err));
-    });
-  
-    const handleDelete= (id) => {
-      const confirm = window.confirm("Do you want to delete?");
-      if (confirm){
-          axios.delete('http://localhost:3030/people/'+id)
-          .then(result => {
-              alert("record deleted")
-              navigate('/')
-          }).catch(err => console.log(err))
-      }
     }
+  };
   return (
     <div>
       <div className="justify-content-center d-flex align-items-center mt-5">
         <div className="w-75">
-          
           <table className="table text-center">
             <thead className="table-success">
               <tr>
@@ -46,7 +47,7 @@ const Home = () => {
                 <th>September</th>
                 <th>October</th>
                 <th>November</th>
-                <th>December</th>  
+                <th>December</th>
                 <th>Action</th>
               </tr>
             </thead>
