@@ -3,12 +3,12 @@ import './login.css';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useLogin } from '../Hooks/useLogin';
-// import { UseAuthContext } from "../hooks/useAuthContext";
-// import { useValidator } from "../hooks/useValidator";
+import { UseAuthContext } from "../Hooks/useAuthContext";
+import { useValidator } from "../Hooks/useValidator";
 function Login() {
-  // const { verifiy } = useValidator();
 
-  // const { user } = UseAuthContext();
+  const { verifiy } = useValidator();
+  const { user } = UseAuthContext();
   const { isLoading, error, login } = useLogin();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -18,10 +18,9 @@ function Login() {
     console.log(email, password);
     e.preventDefault();
     await login(email, password);
-    // if (user) {
-    //   verifiy();
-    //   // navigate('/profile')
-    // }
+    if (user) {
+      verifiy();
+    }
   };
   return (
     <React.Fragment>
@@ -59,9 +58,7 @@ function Login() {
             Submit
           </button>
           {error && <div className="error">{error}</div>}
-          <p className="signin">
-            Don't have an acount ? <Link to="/signup">Signin</Link>
-          </p>
+    
         </form>
       </div>
     </React.Fragment>
