@@ -13,7 +13,7 @@ export const useValidator = () => {
       return;
     }
     const tok = user.token;
-    fetch('http://localhost:3030/people/api/user/verify', {
+    fetch('http://localhost:8000', {
       method: 'POST',
       headers: { authorization: `beared ${tok}` },
     })

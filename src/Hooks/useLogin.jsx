@@ -7,10 +7,9 @@ export const useLogin = () => {
   const [isLoading, setIsLoading] = useState(null);
   const [error, setError] = useState(null);
   const Toast = useToast();
-
   const login = async (Email, password) => {
     setIsLoading(true);
-    const response = await fetch('http://localhost:3030/people/ip/user/login', {
+    const response = await fetch('http://localhost:8000/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -35,7 +34,7 @@ export const useLogin = () => {
       setIsLoading(false);
       localStorage.setItem('user', JSON.stringify(json));
       Toast({
-        title: 'Loged in successfully',
+        title: 'Logged in successfully',
         status: 'success',
         duration: 5000,
         isClosable: true,

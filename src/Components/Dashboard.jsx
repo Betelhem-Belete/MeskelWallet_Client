@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import { useState } from 'react';
 import { v4 as uuid } from 'uuid';
 import axios from 'axios';
@@ -32,7 +32,7 @@ const Dashboard = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post('http://localhost:3030/people', people)
+      .post('http://localhost:8000/add/')
       .then((result) => {
         alert('Person added sucessfully');
         navigate('/');

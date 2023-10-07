@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -26,10 +26,10 @@ const Edit = () => {
   //get/fetch the data or record
   useEffect(() => {
     axios
-      .get('http://localhost:3030/people/' + id)
+      .get('https://localhost:8000/' + id)
       .then((result) => setPeople(result.data))
       .catch((err) => console.log(err));
-  }, []);
+  });
 
   const navigate = useNavigate();
 
@@ -40,7 +40,7 @@ const Edit = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .put('http://localhost:3030/people/' + id, people)
+      .put('http://localhost:8000/edit/' + id)
       .then((result) => {
         alert('Person Updated sucessfully');
         navigate('/');

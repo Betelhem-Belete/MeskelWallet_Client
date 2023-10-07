@@ -1,12 +1,11 @@
 import React from 'react';
 import './login.css';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useLogin } from '../Hooks/useLogin';
-import { UseAuthContext } from "../Hooks/useAuthContext";
-import { useValidator } from "../Hooks/useValidator";
+import { UseAuthContext } from '../Hooks/useAuthContext';
+import { useValidator } from '../Hooks/useValidator';
 function Login() {
-
   const { verifiy } = useValidator();
   const { user } = UseAuthContext();
   const { isLoading, error, login } = useLogin();
@@ -58,7 +57,6 @@ function Login() {
             Submit
           </button>
           {error && <div className="error">{error}</div>}
-    
         </form>
       </div>
     </React.Fragment>

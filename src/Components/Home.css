@@ -1,22 +1,28 @@
-.the_table {
-    overflow-x: auto;
-    max-width: 100%;
-  }
-  
-  .container {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  /* Optional: Adjust the table's font size for better visibility on small screens */
-  .table {
-    font-size: 17px;
-  }
-  
-  /* Optional: Add some padding and margin to the table for better spacing */
-  .table {
-    padding: 10px;
-    margin: 10px;
-  }
-  
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+/* Style for sticky th elements */
+.sticky-header th {
+  position: sticky;
+  top: 0;
+}
+
+/* Add a max-height and vertical scroll for the tbody */
+.scrollable-tbody {
+  max-height: 60vh; /* Adjust the value as needed */
+  overflow-y: auto;
+}
+
+/* Center the Edit and Delete buttons */
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.btn{
+  padding: .5rem;
+  margin: .2rem;
+}
