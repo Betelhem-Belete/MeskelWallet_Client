@@ -11,7 +11,7 @@ export const useLogin = () => {
   const login = async (Email, password) => {
     setIsLoading(true);
     const response = await fetch(
-      'https://gebeyachn-server-apiendpoint.onrender.com/ip/user/login',
+      'http://localhost:8000/login',
       {
         method: 'POST',
         headers: {
