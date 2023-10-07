@@ -13,7 +13,7 @@ const Home = () => {
       .get('http://localhost:3030/people')
       .then((result) => setPeople(result.data))
       .catch((err) => console.log(err));
-  },[]);
+  }, []);
 
   const handleDelete = (id) => {
     const confirm = window.confirm('Do you want to delete?');
@@ -96,9 +96,6 @@ const Home = () => {
       </div>
     </div>
   );
-  
-  
-  
 };
 
 export default Home;
