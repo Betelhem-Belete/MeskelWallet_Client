@@ -26,11 +26,12 @@ const Home = () => {
         .delete('http://localhost:8000/delete/' + id)
         .then((result) => {
           alert('record deleted');
-          navigate('/');
+          window.location.reload();
         })
         .catch((err) => console.log(err));
     }
   };
+  
   return (
   
     <div style={{ height: '100vh' }}>
@@ -60,31 +61,32 @@ const Home = () => {
               </thead>
               <tbody className="scrollable-tbody">
                 {people.map((person) => (
-                  <tr key={person.id}>
+                  <tr key={person._id}>
                     <td>{person.name}</td>
                     <td>{person.Gender}</td>
                     <td>{person.mobile}</td>
-                    <td>{person.monthlyPayments.Tikmt}</td>
-                    <td>{person.monthlyPayments.Hidar}</td>
-                    <td>{person.monthlyPayments.Tahisas}</td>
-                    <td>{person.monthlyPayments.Tir}</td>
-                    <td>{person.monthlyPayments.Yekatit}</td>
-                    <td>{person.monthlyPayments.Megabit}</td>
-                    <td>{person.monthlyPayments.Miyaziya}</td>
-                    <td>{person.monthlyPayments.Ginbot}</td>
-                    <td>{person.monthlyPayments.Hamle}</td>
-                    <td>{person.monthlyPayments.Nehase}</td>
-                    <td>{person.monthlyPayments.Meskerm}</td>
+                    <td>{person.monthlyPayments.Tikmt || '--'}</td>
+                    <td>{person.monthlyPayments.Hidar || '--'}</td>
+                    <td>{person.monthlyPayments.Tahisas || '--'}</td>
+                    <td>{person.monthlyPayments.Tir || '--'}</td>
+                    <td>{person.monthlyPayments.Yekatit || '--'}</td>
+                    <td>{person.monthlyPayments.Megabit || '--'}</td>
+                    <td>{person.monthlyPayments.Miyaziya || '--'}</td>
+                    <td>{person.monthlyPayments.Ginbot || '--'}</td>
+                    <td>{person.monthlyPayments.Hamle || '--'}</td>
+                    <td>{person.monthlyPayments.Nehase || '--'}</td >
+                    <td>{person.monthlyPayments.Meskerm || '--'}</td>
+                    <td></td>
                     <td>
                      { user && <div className="action-buttons">
                         <Link
-                          to={`/edit/${person.id}`}
+                          to={`/edit/${person._id}`}
                           className="btn btn-success btn-sm"
                         >
                           Edit
                         </Link>
                         <button
-                          onClick={() => handleDelete(person.id)}
+                          onClick={() => handleDelete(person._id)}
                           className="btn btn-danger btn-sm"
                         >
                           Delete
