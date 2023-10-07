@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
-import { v4 as uuid } from 'uuid';
+import { UseAuthContext } from "../Hooks/useAuthContext";
+import './Home.css'
 import { Link, useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const [people, setPeople] = useState([]);
   const navigate = useNavigate();
+  const { user } = UseAuthContext();
 
   useEffect(() => {
     axios
@@ -22,12 +24,14 @@ const Home = () => {
         .delete('http://localhost:3030/people/' + id)
         .then((result) => {
           alert('record deleted');
+          
           navigate('/');
         })
         .catch((err) => console.log(err));
     }
   };
   return (
+  
     <div style={{ height: '100vh' }}>
       <div className="mt-5">
         <div className="w-100">
@@ -53,7 +57,7 @@ const Home = () => {
                   <th>Action</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="scrollable-tbody">
                 {people.map((person) => (
                   <tr key={person.id}>
                     <td>{person.name}</td>
@@ -72,7 +76,7 @@ const Home = () => {
                     <td>{person.november}</td>
                     <td>{person.december}</td>
                     <td>
-                      <div className="d-flex justify-content-between align-items-center">
+                     { user && <div className="action-buttons">
                         <Link
                           to={`/edit/${person.id}`}
                           className="btn btn-success btn-sm"
@@ -85,7 +89,7 @@ const Home = () => {
                         >
                           Delete
                         </button>
-                      </div>
+                      </div>}
                     </td>
                   </tr>
                 ))}
@@ -95,6 +99,7 @@ const Home = () => {
         </div>
       </div>
     </div>
+
   );
   
   
