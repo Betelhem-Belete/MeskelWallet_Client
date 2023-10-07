@@ -1,0 +1,22 @@
+.the_table {
+    overflow-x: auto;
+    max-width: 100%;
+  }
+  
+  .container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Optional: Adjust the table's font size for better visibility on small screens */
+  .table {
+    font-size: 17px;
+  }
+  
+  /* Optional: Add some padding and margin to the table for better spacing */
+  .table {
+    padding: 10px;
+    margin: 10px;
+  }
+  

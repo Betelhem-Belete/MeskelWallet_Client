@@ -13,7 +13,7 @@ const Home = () => {
       .get('http://localhost:3030/people')
       .then((result) => setPeople(result.data))
       .catch((err) => console.log(err));
-  });
+  },[]);
 
   const handleDelete = (id) => {
     const confirm = window.confirm('Do you want to delete?');
@@ -28,35 +28,37 @@ const Home = () => {
     }
   };
   return (
-    <div>
-      <div className="justify-content-center d-flex align-items-center mt-5">
-        <div className="w-75">
-          <table className="table text-center">
-            <thead className="table-success">
-              <tr>
-                <th>Name</th>
-                <th>Gender</th>
-                <th>Mobile</th>
-                <th>January</th>
-                <th>February</th>
-                <th>April</th>
-                <th>May</th>
-                <th>June</th>
-                <th>July</th>
-                <th>August</th>
-                <th>September</th>
-                <th>October</th>
-                <th>November</th>
-                <th>December</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {people.map((person) => {
-                return (
+    <div style={{ height: '100vh' }}>
+      <div className="mt-5">
+        <div className="w-100">
+          <div className="table-responsive">
+            <table className="table text-center">
+              <thead className="table-success sticky-header">
+                <tr>
+                  <th>Name</th>
+                  <th>Gender</th>
+                  <th>Mobile</th>
+                  <th>January</th>
+                  <th>February</th>
+                  <th>March</th>
+                  <th>April</th>
+                  <th>May</th>
+                  <th>June</th>
+                  <th>July</th>
+                  <th>August</th>
+                  <th>September</th>
+                  <th>October</th>
+                  <th>November</th>
+                  <th>December</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {people.map((person) => (
                   <tr key={person.id}>
                     <td>{person.name}</td>
                     <td>{person.gender}</td>
+                    <td>{person.mobile}</td>
                     <td>{person.january}</td>
                     <td>{person.february}</td>
                     <td>{person.march}</td>
@@ -64,34 +66,39 @@ const Home = () => {
                     <td>{person.may}</td>
                     <td>{person.june}</td>
                     <td>{person.july}</td>
-                    <td>{person.augest}</td>
+                    <td>{person.august}</td>
                     <td>{person.september}</td>
                     <td>{person.october}</td>
                     <td>{person.november}</td>
                     <td>{person.december}</td>
                     <td>
-                      <Link
-                        to={`/edit/${person.id}`}
-                        className="btn btn-success me-2n btn-sm"
-                      >
-                        Edit
-                      </Link>
-                      <button
-                        onClick={() => handleDelete(person.id)}
-                        className="btn btn-danger me-2n btn-sm"
-                      >
-                        Delete
-                      </button>
+                      <div className="d-flex justify-content-between align-items-center">
+                        <Link
+                          to={`/edit/${person.id}`}
+                          className="btn btn-success btn-sm"
+                        >
+                          Edit
+                        </Link>
+                        <button
+                          onClick={() => handleDelete(person.id)}
+                          className="btn btn-danger btn-sm"
+                        >
+                          Delete
+                        </button>
+                      </div>
                     </td>
                   </tr>
-                );
-              })}
-            </tbody>
-          </table>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
   );
+  
+  
+  
 };
 
 export default Home;
