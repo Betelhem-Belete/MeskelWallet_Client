@@ -6,27 +6,27 @@ const Edit = () => {
   const { id } = useParams(); //take id from url
 
   const [people, setPeople] = useState({
-    id: id,
     name: '',
     gender: '',
     mobile: '',
-    january: '',
-    february: '',
-    march: '',
-    april: '',
-    may: '',
-    june: '',
-    july: '',
-    augest: '',
-    september: '',
-    november: '',
-    december: '',
+    Tikmt: '',
+    Hidar: '',
+    Tahisas: '',
+    Tir: '',
+    Yekatit: '',
+    Megabit: '',
+    Miyaziya: '',
+    Ginbot: '',
+    Sene: '',
+    Hamle: '',
+    Nehase: '',
+    Meskerm: '',
   });
 
   //get/fetch the data or record
   useEffect(() => {
     axios
-      .get('http://localhost:3030/people/' + id)
+      .get('http://localhost:3030/' + id)
       .then((result) => setPeople(result.data))
       .catch((err) => console.log(err));
   }, []);
@@ -40,7 +40,7 @@ const Edit = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .put('http://localhost:3030/people/' + id, people)
+      .put('http://localhost:3030/edit/' + id, people)
       .then((result) => {
         alert('Person Updated sucessfully');
         navigate('/');
@@ -88,135 +88,135 @@ const Edit = () => {
             />
           </div>
           <div>
-            <label htmlFor="january">January: </label>
+            <label htmlFor="Tikmt">Tikmt: </label>
             <input
               type="number"
-              name="january"
+              name="Tikmt"
               className="form-control"
-              placeholder="Enter money in january"
+              placeholder="Enter money in Tikmt"
               onChange={handleInput}
-              value={people.january}
+              value={people.Tikmt}
             />
           </div>
           <div>
-            <label htmlFor="mobile">February: </label>
+            <label htmlFor="Hidar">Hidar: </label>
             <input
               type="number"
-              name="february"
+              name="Hidar"
               className="form-control"
-              placeholder="Enter money"
+              placeholder="Enter money Hidar"
               onChange={handleInput}
-              value={people.february}
+              value={people.Hidar}
             />
           </div>
           <div>
-            <label htmlFor="march">March: </label>
+            <label htmlFor="Tahisas">Tahisas: </label>
             <input
               type="number"
-              name="march"
+              name="Tahisas"
               className="form-control"
               placeholder="Enter money"
               onChange={handleInput}
-              value={people.march}
+              value={people.Tahisas}
             />
           </div>
           <div>
-            <label htmlFor="april">April: </label>
+            <label htmlFor="april">Tir: </label>
             <input
               type="number"
-              name="april"
+              name="Tir"
               className="form-control"
               placeholder="Enter money"
               onChange={handleInput}
-              value={people.april}
+              value={people.Tir}
             />
           </div>
           <div>
-            <label htmlFor="may">May: </label>
+            <label htmlFor="Yekatit">Yekatit: </label>
             <input
               type="number"
-              name="may"
+              name="Yekatit"
               className="form-control"
               placeholder="Enter money"
               onChange={handleInput}
-              value={people.may}
+              value={people.Yekatit}
             />
           </div>
           <div>
-            <label htmlFor="june">June: </label>
+            <label htmlFor="Megabit">Megabit: </label>
             <input
               type="number"
-              name="june"
+              name="Megabit"
               className="form-control"
               placeholder="Enter money"
               onChange={handleInput}
-              value={people.june}
+              value={people.Megabit}
             />
           </div>
           <div>
-            <label htmlFor="july">July: </label>
+            <label htmlFor="Miyaziya">Miyaziya: </label>
             <input
               type="number"
-              name="july"
+              name="Miyaziya"
               className="form-control"
               placeholder="Enter money"
               onChange={handleInput}
-              value={people.july}
+              value={people.Miyaziya}
             />
           </div>
           <div>
-            <label htmlFor="augest">August: </label>
+            <label htmlFor="Ginbot">Ginbot: </label>
             <input
               type="number"
-              name="augest"
+              name="Ginbot"
               className="form-control"
               placeholder="Enter money"
               onChange={handleInput}
-              value={people.augest}
+              value={people.Ginbot}
             />
           </div>
           <div>
-            <label htmlFor="september">September: </label>
+            <label htmlFor="Sene">Sene: </label>
             <input
               type="number"
-              name="september"
+              name="Sene"
               className="form-control"
               placeholder="Enter money"
               onChange={handleInput}
-              value={people.september}
+              value={people.Sene}
             />
           </div>
           <div>
-            <label htmlFor="october">October: </label>
+            <label htmlFor="Hamle">Hamle: </label>
             <input
               type="number"
-              name="october"
+              name="Hamle"
               className="form-control"
               placeholder="Enter money"
               onChange={handleInput}
-              value={people.october}
+              value={people.Hamle}
             />
           </div>
           <div>
-            <label htmlFor="november">November: </label>
+            <label htmlFor="Nehase">Nehase: </label>
             <input
               type="number"
-              name="november"
+              name="Nehase"
               className="form-control"
               placeholder="Enter money"
               onChange={handleInput}
-              value={people.november}
+              value={people.Nehase}
             />
           </div>
           <div>
-            <label htmlFor="december">December: </label>
+            <label htmlFor="Meskerm">Meskerm: </label>
             <input
               type="number"
-              name="december"
+              name="Meskerm"
               className="form-control"
               placeholder="Enter money"
               onChange={handleInput}
-              value={people.december}
+              value={people.Meskerm}
             />
           </div>
           <button className="btn btn-info mt-1">Edit</button>
