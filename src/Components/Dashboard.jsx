@@ -1,45 +1,61 @@
 // import React from 'react';
-import { useState } from 'react';
+// import { useState } from 'react';
 import { v4 as uuid } from 'uuid';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
-  const [people, setPeople] = useState({
-    id: uuid(),
+  const [formData, setFormData] = useState({
     name: '',
-    gender: '',
     mobile: '',
-    january: '',
-    february: '',
-    march: '',
-    april: '',
-    may: '',
-    june: '',
-    july: '',
-    augest: '',
-    september: '',
-    november: '',
-    december: '',
+    Gender: '',
+    Meskerem: '',
+    Tikmt: '',
+    Hidar: '',
+    Tahisas: '',
+    Tir: '',
+    Yekatit: '',
+    Megabit: '',
+    Miyaziya: '',
+    Ginbot: '',
+    Sene: '',
+    Hamle: '',
+    Nehase: '',
+    Meskerm: '',
   });
 
   const navigate = useNavigate();
 
   const handleInput = (e) => {
-    setPeople({ ...people, [e.target.name]: e.target.value });
+    // const { name, value } = e.target;
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  //when press submit button to post the data to the form
+
+  // const handleMonthlyPaymentsInput = (e) => {
+  //   const { name, value } = e.target;
+  //   setFormData((prevData) => ({
+  //     ...prevData,
+  //     monthlyPayments: {
+  //       ...prevData.monthlyPayments,
+  //       [name]: value,
+  //     },
+  //   }));
+  // };
+
+  // console.log(formData)
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post('http://localhost:8000/add/')
+      .post('http://localhost:8000/add', formData)
       .then((result) => {
-        alert('Person added sucessfully');
+        alert('Person added successfully');
         navigate('/');
         console.log(result);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err.message));
   };
+
   return (
     <div className="d-flex w-100 justify-content-center align-items-center">
       <div className="w-50 border mt-5 rounded bg-secondary text-white p-5">
@@ -56,10 +72,21 @@ const Dashboard = () => {
             />
           </div>
           <div>
-            <label htmlFor="gender">Gender: </label>
+            <label htmlFor="phone">Phone: </label>
             <input
               type="text"
-              name="gender"
+              name="phone"
+              className="form-control"
+              required
+              placeholder="Enter Mobile Number"
+              onChange={handleInput}
+            />
+          </div>
+          <div>
+            <label htmlFor="Gender">Gender: </label>
+            <input
+              type="text"
+              name="Gender"
               className="form-control"
               required
               placeholder="Enter Gender"
@@ -67,125 +94,136 @@ const Dashboard = () => {
             />
           </div>
           <div>
-            <label htmlFor="mobile">Mobile: </label>
+            <label htmlFor="Meskerm">Money in Meskerm: </label>
             <input
               type="number"
-              name="mobile"
+              name="Meskerm"
               className="form-control"
-              placeholder="Enter Mobile Number"
+              placeholder="Amount of money"
               onChange={handleInput}
             />
           </div>
           <div>
-            <label htmlFor="january">Money in January: </label>
+            <label htmlFor="Tikmt">Money in Tikmt: </label>
             <input
               type="number"
-              name="january"
+              name="Tikmt"
               className="form-control"
-              placeholder="amount of money"
+              placeholder="Amount of money"
               onChange={handleInput}
             />
           </div>
           <div>
-            <label htmlFor="february">Money in February: </label>
+            <label htmlFor="Hidar">Money in Hidar: </label>
             <input
               type="number"
-              name="february"
+              name="Hidar"
               className="form-control"
-              placeholder="amount of money"
+              placeholder="Amount of money"
               onChange={handleInput}
             />
           </div>
           <div>
-            <label htmlFor="march">Money in March: </label>
+            <label htmlFor="Tahisas">Money in Tahisas: </label>
             <input
               type="number"
-              name="march"
+              name="Tahisas"
               className="form-control"
-              placeholder="amount of money"
+              placeholder="Amount of money"
               onChange={handleInput}
             />
           </div>
           <div>
-            <label htmlFor="aril">Money in April: </label>
+            <label htmlFor="Tir">Money in Tir: </label>
             <input
               type="number"
-              name="april"
+              name="Tir"
               className="form-control"
-              placeholder="amount of money"
+              placeholder="Amount of money"
               onChange={handleInput}
             />
           </div>
           <div>
-            <label htmlFor="june">Money in June: </label>
+            <label htmlFor="Yekatit">Money in Yekatit: </label>
             <input
               type="number"
-              name="june"
+              name="Yekatit"
               className="form-control"
-              placeholder="amount of money"
+              placeholder="Amount of money"
               onChange={handleInput}
             />
           </div>
           <div>
-            <label htmlFor="july">Money in July: </label>
+            <label htmlFor="Megabit">Money in Megabit: </label>
             <input
               type="number"
-              name="july"
+              name="Megabit"
               className="form-control"
-              placeholder="amount of money"
+              placeholder="Amount of money"
               onChange={handleInput}
             />
           </div>
           <div>
-            <label htmlFor="augest">Money in August: </label>
+            <label htmlFor="Miyaziya">Money in Miyaziya: </label>
             <input
               type="number"
-              name="augest"
+              name="Miyaziya"
               className="form-control"
-              placeholder="amount of money"
+              placeholder="Amount of money"
               onChange={handleInput}
             />
           </div>
           <div>
-            <label htmlFor="september">Money in September: </label>
+            <label htmlFor="Ginbot">Money in Ginbot: </label>
             <input
               type="number"
-              name="september"
+              name="Ginbot"
               className="form-control"
-              placeholder="amount of money"
+              placeholder="Amount of money"
               onChange={handleInput}
             />
           </div>
           <div>
-            <label htmlFor="october">Money in October: </label>
+            <label htmlFor="Sene">Money in Sene: </label>
             <input
               type="number"
-              name="october"
+              name="Sene"
               className="form-control"
-              placeholder="amount of money"
+              placeholder="Amount of money"
               onChange={handleInput}
             />
           </div>
           <div>
-            <label htmlFor="november">Money in November:: </label>
+            <label htmlFor="Hamle">Money in Hamle: </label>
             <input
               type="number"
-              name="november"
+              name="Hamle"
               className="form-control"
-              placeholder="amount of money"
+              placeholder="Amount of money"
               onChange={handleInput}
             />
           </div>
           <div>
-            <label htmlFor="december">Money in December: </label>
+            <label htmlFor="Nehase">Money in Nehase: </label>
             <input
               type="number"
-              name="december"
+              name="Nehase"
               className="form-control"
-              placeholder="amount of money"
+              placeholder="Amount of money"
               onChange={handleInput}
             />
           </div>
+          <div>
+            <label htmlFor="Meskerm">Money in Meskerm: </label>
+            <input
+              type="number"
+              name="Meskerm"
+              className="form-control"
+              placeholder="Amount of money"
+              onChange={handleInput}
+            />
+          </div>
+
           <button className="btn btn-info mt-1">Submit</button>
         </form>
       </div>

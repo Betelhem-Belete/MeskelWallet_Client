@@ -9,13 +9,16 @@ export const useLogin = () => {
   const Toast = useToast();
   const login = async (Email, password) => {
     setIsLoading(true);
-    const response = await fetch('http://localhost:8000/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ Email, password }),
-    });
+    const response = await fetch(
+      'http://localhost:8000/login',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ Email, password }),
+      }
+    );
     const json = await response.json();
 
     if (!response.ok) {

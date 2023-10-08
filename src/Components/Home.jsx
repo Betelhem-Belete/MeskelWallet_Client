@@ -5,6 +5,7 @@ import { UseAuthContext } from '../Hooks/useAuthContext';
 import './Home.css';
 import { Link, useNavigate } from 'react-router-dom';
 
+// const API = process.env.API;
 const Home = () => {
   const [people, setPeople] = useState([]);
   const navigate = useNavigate();
@@ -15,8 +16,8 @@ const Home = () => {
       .get('http://localhost:8000/')
       .then((result) => setPeople(result.data))
       .catch((err) => console.log(err));
-  }, []);
-
+      console.log(people)
+    }, []);
   const handleDelete = (id) => {
     const confirm = window.confirm('Do you want to delete?');
     if (confirm) {
@@ -24,8 +25,7 @@ const Home = () => {
         .delete('http://localhost:8000/delete/' + id)
         .then((result) => {
           alert('record deleted');
-
-          navigate('/');
+         navigate('/');
         })
         .catch((err) => console.log(err));
     }
@@ -41,18 +41,18 @@ const Home = () => {
                   <th>Name</th>
                   <th>Gender</th>
                   <th>Mobile</th>
-                  <th>January</th>
-                  <th>February</th>
-                  <th>March</th>
-                  <th>April</th>
-                  <th>May</th>
-                  <th>June</th>
-                  <th>July</th>
-                  <th>August</th>
-                  <th>September</th>
-                  <th>October</th>
-                  <th>November</th>
-                  <th>December</th>
+                  <th>Tikimt</th>
+                  <th>Hidar</th>
+                  <th>Tahisas</th>
+                  <th>Tir</th>
+                  <th>Yekatit</th>
+                  <th>Megabit</th>
+                  <th>Miyaziya</th>
+                  <th>Ginbot</th>
+                  <th>Sene</th>
+                  <th>Hamle</th>
+                  <th>Nehase</th>
+                  <th>Meskerm</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -60,20 +60,19 @@ const Home = () => {
                 {people.map((person) => (
                   <tr key={person.id}>
                     <td>{person.name}</td>
-                    <td>{person.gender}</td>
+                    <td>{person.Gender}</td>
                     <td>{person.mobile}</td>
-                    <td>{person.january}</td>
-                    <td>{person.february}</td>
-                    <td>{person.march}</td>
-                    <td>{person.april}</td>
-                    <td>{person.may}</td>
-                    <td>{person.june}</td>
-                    <td>{person.july}</td>
-                    <td>{person.august}</td>
-                    <td>{person.september}</td>
-                    <td>{person.october}</td>
-                    <td>{person.november}</td>
-                    <td>{person.december}</td>
+                    <td>{person.monthlyPayments.Tikmt}</td>
+                    <td>{person.monthlyPayments.Hidar}</td>
+                    <td>{person.monthlyPayments.Tahisas}</td>
+                    <td>{person.monthlyPayments.Tir}</td>
+                    <td>{person.monthlyPayments.Yekatit}</td>
+                    <td>{person.monthlyPayments.Megabit}</td>
+                    <td>{person.monthlyPayments.Miyaziya}</td>
+                    <td>{person.monthlyPayments.Ginbot}</td>
+                    <td>{person.monthlyPayments.Hamle}</td>
+                    <td>{person.monthlyPayments.Nehase}</td>
+                    <td>{person.monthlyPayments.Meskerm}</td>
                     <td>
                       {user && (
                         <div className="action-buttons">
