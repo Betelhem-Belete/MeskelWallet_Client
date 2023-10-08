@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
-import { UseAuthContext } from '../Hooks/useAuthContext';
+import { Link } from 'react-router-dom';
+import { UseAuthContext } from "../Hooks/useAuthContext";
 
 const Home = () => {
   const [people, setPeople] = useState([]);
-  const navigate = useNavigate();
   const { user } = UseAuthContext();
 
   useEffect(() => {
@@ -15,25 +14,45 @@ const Home = () => {
       .then((result) => setPeople(result.data))
       .catch((err) => console.log(err));
   }, []);
-  console.log('from Home', people);
-  ////////
+
   const handleDelete = (id) => {
-    const confirm = window.confirm('Do you want to delete?');
-    if (confirm) {
+    const confirmDelete = window.confirm('Do you want to delete?');
+    if (confirmDelete) {
       axios
         .delete('http://localhost:8000/delete/' + id)
         .then((result) => {
-          alert('record deleted');
-          navigate('/');
+          alert('Record deleted');
+          window.location.reload(); // Reload the page after delete
         })
         .catch((err) => console.log(err));
     }
   };
+
+  const totalCash = people.reduce((total, person) => {
+    const personalTotal =
+      (person.Tikmt ? parseFloat(person.Tikmt) : 0) +
+      (person.Hidar ? parseFloat(person.Hidar) : 0) +
+      (person.Tahisas ? parseFloat(person.Tahisas) : 0) +
+      (person.Tir ? parseFloat(person.Tir) : 0) +
+      (person.Yekatit ? parseFloat(person.Yekatit) : 0) +
+      (person.Megabit ? parseFloat(person.Megabit) : 0) +
+      (person.Miyaziya ? parseFloat(person.Miyaziya) : 0) +
+      (person.Ginbot ? parseFloat(person.Ginbot) : 0) +
+      (person.Sene ? parseFloat(person.Sene) : 0) +
+      (person.Hamle ? parseFloat(person.Hamle) : 0) +
+      (person.Nehase ? parseFloat(person.Nehase) : 0) +
+      (person.Meskerm ? parseFloat(person.Meskerm) : 0);
+    return total + personalTotal;
+  }, 0);
+
   return (
     <div style={{ height: '100vh' }}>
-      <div className="mt-5">
+      <div className="mt-3">
         <div className="w-100">
-          <div className="table-responsive">
+          <h2 className="text-center font-weight-bold ">
+            Total Current Money = {totalCash}
+          </h2>
+          <div className="table-responsive mt-3">
             <table className="table text-center">
               <thead className="table-success sticky-header">
                 <tr>
@@ -52,48 +71,65 @@ const Home = () => {
                   <th>Hamle</th>
                   <th>Nehase</th>
                   <th>Meskerm</th>
+                  <th>Total</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                {people.map((person) => (
-                  <tr key={person._id}>
-                    <td>{person.name ? person.name : '--'}</td>
-                    <td>{person.gender ? person.gender : '--'}</td>
-                    <td>{person.mobile ? person.mobile : '--'}</td>
-                    <td>{person.Tikmt ? person.Tikmt : '--'}</td>
-                    <td>{person.Hidar ? person.Hidar : '--'}</td>
-                    <td>{person.Tahisas ? person.Tahisas : '--'}</td>
-                    <td>{person.Tir ? person.Tir : '--'}</td>
-                    <td>{person.Yekatit ? person.Yekatit : '--'}</td>
-                    <td>{person.Megabit ? person.Megabit : '--'}</td>
-                    <td>{person.Miyaziya ? person.Miyaziya : '--'}</td>
-                    <td>{person.Ginbot ? person.Ginbot : '--'}</td>
-                    <td>{person.Sene ? person.Sene : '--'}</td>
-                    <td>{person.Hamle ? person.Hamle : '--'}</td>
-                    <td>{person.Nehase ? person.Nehase : '--'}</td>
-                    <td>{person.Meskerm ? person.Meskerm : '--'}</td>
+                {people.map((person) => {
+                  const personalTotal =
+                    (person.Tikmt ? parseFloat(person.Tikmt) : 0) +
+                    (person.Hidar ? parseFloat(person.Hidar) : 0) +
+                    (person.Tahisas ? parseFloat(person.Tahisas) : 0) +
+                    (person.Tir ? parseFloat(person.Tir) : 0) +
+                    (person.Yekatit ? parseFloat(person.Yekatit) : 0) +
+                    (person.Megabit ? parseFloat(person.Megabit) : 0) +
+                    (person.Miyaziya ? parseFloat(person.Miyaziya) : 0) +
+                    (person.Ginbot ? parseFloat(person.Ginbot) : 0) +
+                    (person.Sene ? parseFloat(person.Sene) : 0) +
+                    (person.Hamle ? parseFloat(person.Hamle) : 0) +
+                    (person.Nehase ? parseFloat(person.Nehase) : 0) +
+                    (person.Meskerm ? parseFloat(person.Meskerm) : 0);
 
-                    <td>
-                      {user && (
-                        <div className="d-flex justify-content-between align-items-center">
-                          <Link
-                            to={`/edit/${person._id}`}
-                            className="btn btn-success btn-sm"
-                          >
-                            Edit
-                          </Link>
-                          <button
-                            onClick={() => handleDelete(person._id)}
-                            className="btn btn-danger btn-sm"
-                          >
-                            Delete
-                          </button>
-                        </div>
-                      )}
-                    </td>
-                  </tr>
-                ))}
+                  return (
+                    <tr key={person._id}>
+                      <td><strong>{person.name ? person.name : '--'}</strong></td>
+                      <td><strong>{person.gender ? person.gender : '--'}</strong></td>
+                      <td><strong>{person.mobile ? person.mobile : '--'}</strong></td>
+                      <td>{person.Tikmt ? person.Tikmt : '--'}</td>
+                      <td>{person.Hidar ? person.Hidar : '--'}</td>
+                      <td>{person.Tahisas ? person.Tahisas : '--'}</td>
+                      <td>{person.Tir ? person.Tir : '--'}</td>
+                      <td>{person.Yekatit ? person.Yekatit : '--'}</td>
+                      <td>{person.Megabit ? person.Megabit : '--'}</td>
+                      <td>{person.Miyaziya ? person.Miyaziya : '--'}</td>
+                      <td>{person.Ginbot ? person.Ginbot : '--'}</td>
+                      <td>{person.Sene ? person.Sene : '--'}</td>
+                      <td>{person.Hamle ? person.Hamle : '--'}</td>
+                      <td>{person.Nehase ? person.Nehase : '--'}</td>
+                      <td>{person.Meskerm ? person.Meskerm : '--'}</td>
+                      <td><strong>{personalTotal}</strong></td>
+                      <td>
+                        {user && (
+                          <div className="d-flex justify-content-between align-items-center">
+                            <Link
+                              to={`/edit/${person._id}`}
+                              className="btn btn-success btn-sm"
+                            >
+                              Edit
+                            </Link>
+                            <button
+                              onClick={() => handleDelete(person._id)}
+                              className="btn btn-danger btn-sm ms-2"
+                            >
+                              Delete
+                            </button>
+                          </div>
+                        )}
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>

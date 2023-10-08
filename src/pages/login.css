@@ -16,7 +16,7 @@
     197,
     0.329
   ); /* Adjust the alpha value for transparency */
-  backdrop-filter: blur(30px);
+  backdrop-filter: blur(10px);
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -32,7 +32,7 @@
 }
 .title {
   font-size: 28px;
-  color: hsl(21, 100%, 50%);
+  color: gray;
   font-weight: 600;
   letter-spacing: -1px;
   position: relative;
@@ -49,13 +49,13 @@
   width: 16px;
   border-radius: 50%;
   left: 0px;
-  background-color: #ff5a00;
+  background-color:gray;
 }
 
 .title::before {
   width: 18px;
   height: 18px;
-  background-color: #ff5a00;
+  background-color:gray;
 }
 
 .title::after {
@@ -75,11 +75,11 @@
 }
 
 .signin a {
-  color: #ff5a00;
+  color:gray;
 }
 
 .signin a:hover {
-  text-decoration: underline #ff5a00;
+  text-decoration: underline gray;
 }
 
 .flex {
@@ -129,7 +129,7 @@
 .submit {
   border: none;
   outline: none;
-  background-color: #ff5a00;
+  background-color: gray;
   padding: 10px;
   border-radius: 10px;
   color: #fff;
@@ -138,7 +138,7 @@
 }
 
 .submit:hover {
-  background-color: rgb(194, 118, 56);
+  background-color: rgb(87, 85, 84);
   cursor: pointer;
 }
 
