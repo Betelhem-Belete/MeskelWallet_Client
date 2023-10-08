@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { UseAuthContext } from '../Hooks/useAuthContext';
 import { UseLogout } from '../Hooks/useLogout';
+import './navbar.css'; // Import your custom CSS file
 
 const Navbar = () => {
   const { logout } = UseLogout();
@@ -9,37 +10,54 @@ const Navbar = () => {
     logout();
   };
   const { user } = UseAuthContext();
-
   return (
     <div>
-      <div className="d-flex justify-content-between bg-secondary text-light p-2 w-100">
-        <div>
-          <h2>
-            <Link to="/" style={{ color: 'white', textDecoration: 'none', marginLeft: '5rem' }}>
-              Meskel Wallet
-            </Link>
-          </h2>
+      <nav className="navbar navbar-expand-md navbar-dark bg-secondary">
+        <div className="container">
+          <Link className="navbar-brand" to="/">
+            Meskel Wallet
+          </Link>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav ml-auto">
+              {user && (
+                <li className="nav-item">
+                  <Link className="nav-link" to="/Dashboard">
+                    Dashboard
+                  </Link>
+                </li>
+              )}
+              {!user && (
+                <li className="nav-item">
+                  <Link className="btn btn-light mr-2" to="/login">
+                    Login
+                  </Link>
+                </li>
+              )}
+              {user && (
+                <li className="nav-item ml-auto">
+                  <button
+                    className="btn btn-light"
+                    onClick={handl_logout}
+                  >
+                    Log out
+                  </button>
+                </li>
+              )}
+            </ul>
+          </div>
         </div>
-        <div className="btns">
-          {user && (
-            <Link to="/Dashboard" className="btn btn-secondary btn-sm mb-2">
-              Dashboard
-            </Link>
-          )}
-          {!user && (
-            <Link to="/login">
-              <button className="btn btn-light ms-3">Login</button>
-            </Link>
-          )}
-          {user && (
-            <Link to="/">
-              <button className="btn btn-light ms-3" onClick={handl_logout}>
-                Log out
-              </button>
-            </Link>
-          )}
-        </div>
-      </div>
+      </nav>
     </div>
   );
 };

@@ -1,0 +1,5 @@
+/* Align the logo and login to the left */
+.container{
+    display: flex;
+    justify-content: space-between;
+}
