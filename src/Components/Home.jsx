@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-import { UseAuthContext } from "../Hooks/useAuthContext";
+import { UseAuthContext } from '../Hooks/useAuthContext';
 
 const Home = () => {
   const [people, setPeople] = useState([]);
@@ -11,17 +11,17 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3030/')
+      .get('http://localhost:8000/')
       .then((result) => setPeople(result.data))
       .catch((err) => console.log(err));
   }, []);
-  console.log("from HOme", people)
+  console.log('from Home', people);
   ////////
   const handleDelete = (id) => {
     const confirm = window.confirm('Do you want to delete?');
     if (confirm) {
       axios
-        .delete('http://localhost:3030/delete/' + id)
+        .delete('http://localhost:8000/delete/' + id)
         .then((result) => {
           alert('record deleted');
           navigate('/');
@@ -75,20 +75,22 @@ const Home = () => {
                     <td>{person.Meskerm ? person.Meskerm : '--'}</td>
 
                     <td>
-                      {user && <div className="d-flex justify-content-between align-items-center">
-                        <Link
-                          to={`/edit/${person._id}`}
-                          className="btn btn-success btn-sm"
-                        >
-                          Edit
-                        </Link>
-                        <button
-                          onClick={() => handleDelete(person._id)}
-                          className="btn btn-danger btn-sm"
-                        >
-                          Delete
-                        </button>
-                      </div>}
+                      {user && (
+                        <div className="d-flex justify-content-between align-items-center">
+                          <Link
+                            to={`/edit/${person._id}`}
+                            className="btn btn-success btn-sm"
+                          >
+                            Edit
+                          </Link>
+                          <button
+                            onClick={() => handleDelete(person._id)}
+                            className="btn btn-danger btn-sm"
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      )}
                     </td>
                   </tr>
                 ))}
@@ -99,9 +101,6 @@ const Home = () => {
       </div>
     </div>
   );
-
-
-
 };
 
 export default Home;

@@ -20,7 +20,7 @@ const Dashboard = () => {
     Sene: '',
     Hamle: '',
     Nehase: '',
-    Meskerm: ''
+    Meskerm: '',
   });
 
   const navigate = useNavigate();
@@ -32,14 +32,14 @@ const Dashboard = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post('http://localhost:3030/add', people)
+      .post('http://localhost:8000/add', people)
       .then((result) => {
         alert('Person added sucessfully');
         navigate('/');
         console.log(result);
       })
       .catch((err) => console.log(err));
-      console.log("from dashboard",people)
+    console.log('from dashboard', people);
   };
   return (
     <div className="d-flex w-100 justify-content-center align-items-center">
