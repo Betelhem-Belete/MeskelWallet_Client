@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { UseAuthContext } from './useAuthContext';
-import { useToast } from '@chakra-ui/react';
 
 export const useLogin = () => {
   const { dispatch } = UseAuthContext();
