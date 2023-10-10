@@ -46,10 +46,7 @@ const Navbar = () => {
               )}
               {user && (
                 <li className="nav-item ml-auto">
-                  <button
-                    className="btn btn-light"
-                    onClick={handl_logout}
-                  >
+                  <button className="btn btn-light" onClick={handl_logout}>
                     Log out
                   </button>
                 </li>

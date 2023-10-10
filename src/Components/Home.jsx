@@ -2,15 +2,29 @@ import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { UseAuthContext } from "../Hooks/useAuthContext";
+import { UseAuthContext } from '../Hooks/useAuthContext';
 
 const Home = () => {
   const [people, setPeople] = useState([]);
   const { user } = UseAuthContext();
+  const APIhome = import.meta.env.VITE_API;
+  const Apidelete = import.meta.env.VITE_API_DELETE;
+
+  // const Mobile = () => {
+  //   const [mobileVisible, setMobileVisible] = useState(false);
+
+  //   const handleMobileVisibility = () => {
+  //     setMobileVisible(!user);
+  //   };
+
+  // {mobileVisible &&
+  // <td><strong>
+  // {person.mobile ? person.mobile : '--'}
+  // </strong></td>}
 
   useEffect(() => {
     axios
-      .get('http://localhost:8000/')
+      .get(APIhome)
       .then((result) => setPeople(result.data))
       .catch((err) => console.log(err));
   }, []);
@@ -19,7 +33,7 @@ const Home = () => {
     const confirmDelete = window.confirm('Do you want to delete?');
     if (confirmDelete) {
       axios
-        .delete('http://localhost:8000/delete/' + id)
+        .delete(Apidelete + id)
         .then((result) => {
           alert('Record deleted');
           window.location.reload(); // Reload the page after delete
@@ -93,9 +107,17 @@ const Home = () => {
 
                   return (
                     <tr key={person._id}>
-                      <td><strong>{person.name ? person.name : '--'}</strong></td>
-                      <td><strong>{person.gender ? person.gender : '--'}</strong></td>
-                      <td><strong>{person.mobile ? person.mobile : '--'}</strong></td>
+                      <td>
+                        <strong>{person.name ? person.name : '--'}</strong>
+                      </td>
+                      <td>
+                        <strong>{person.gender ? person.gender : '--'}</strong>
+                      </td>
+                      <td>
+                        <strong>
+                          {user && person.mobile ? person.mobile : '--'}
+                        </strong>
+                      </td>
                       <td>{person.Tikmt ? person.Tikmt : '--'}</td>
                       <td>{person.Hidar ? person.Hidar : '--'}</td>
                       <td>{person.Tahisas ? person.Tahisas : '--'}</td>
@@ -108,7 +130,9 @@ const Home = () => {
                       <td>{person.Hamle ? person.Hamle : '--'}</td>
                       <td>{person.Nehase ? person.Nehase : '--'}</td>
                       <td>{person.Meskerm ? person.Meskerm : '--'}</td>
-                      <td><strong>{personalTotal}</strong></td>
+                      <td>
+                        <strong>{personalTotal}</strong>
+                      </td>
                       <td>
                         {user && (
                           <div className="d-flex justify-content-between align-items-center">

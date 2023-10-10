@@ -21,7 +21,7 @@ const Dashboard = () => {
     Nehase: '',
     Meskerm: '',
   });
-
+  const APIadd = import.meta.env.VITE_API_ADD;
   const navigate = useNavigate();
 
   const handleInput = (e) => {
@@ -31,7 +31,7 @@ const Dashboard = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post('http://localhost:8000/add', people)
+      .post(APIadd, people)
       .then((result) => {
         alert('Person added sucessfully');
         navigate('/');

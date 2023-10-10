@@ -4,6 +4,8 @@ import axios from 'axios';
 
 const Edit = () => {
   const { id } = useParams(); //take id from url
+  const APIhome = import.meta.env.VITE_API;
+  const APIedit = import.meta.env.VITE_API_EDIT;
 
   const [people, setPeople] = useState({
     name: '',
@@ -26,7 +28,7 @@ const Edit = () => {
   //get/fetch the data or record
   useEffect(() => {
     axios
-      .get('http://localhost:8000/' + id)
+      .get(APIhome + id)
       .then((result) => setPeople(result.data))
       .catch((err) => console.log(err));
   }, []);
@@ -40,7 +42,7 @@ const Edit = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .put('http://localhost:8000/edit/' + id, people)
+      .put(APIedit + id, people)
       .then((result) => {
         alert('Person Updated sucessfully');
         navigate('/');
