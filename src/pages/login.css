@@ -3,7 +3,6 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: url('../assets/login.svg');
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -49,13 +48,13 @@
   width: 16px;
   border-radius: 50%;
   left: 0px;
-  background-color:gray;
+  background-color: gray;
 }
 
 .title::before {
   width: 18px;
   height: 18px;
-  background-color:gray;
+  background-color: gray;
 }
 
 .title::after {
@@ -75,7 +74,7 @@
 }
 
 .signin a {
-  color:gray;
+  color: gray;
 }
 
 .signin a:hover {
