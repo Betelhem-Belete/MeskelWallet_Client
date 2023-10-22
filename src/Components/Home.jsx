@@ -35,7 +35,7 @@ const Home = () => {
       axios
         .delete(Apidelete + id)
         .then((result) => {
-          alert('Record deleted');
+          alert('Record deleted succesfully');
           window.location.reload(); // Reload the page after delete
         })
         .catch((err) => console.log(err));
